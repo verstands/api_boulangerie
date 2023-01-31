@@ -26,6 +26,12 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 //les tables
+     db.produits = require('./produitModel.js')(sequelize, DataTypes)
+     db.administrateur = require('./administrateurModel.js')(sequelize, DataTypes)
+     db.fonction = require('./fonctionModel.js')(sequelize, DataTypes)
+     db.client = require('./clientModel.js')(sequelize, DataTypes)
+     db.categorie = require('./categorieModel.js')(sequelize, DataTypes)
+     db.agent = require('./agentModel.js')(sequelize, DataTypes)
 
 
 db.sequelize.sync({force : false})
