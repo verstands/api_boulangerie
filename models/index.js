@@ -1,5 +1,5 @@
-const dbconfig = require('../config/dbcConfig')
-const {Sequelize, DateType} = require('sequelize')
+const dbconfig = require('../config/dbcConfig.js')
+const {Sequelize, DataTypes} = require('sequelize')
 
 const sequelize = new Sequelize(
      dbconfig.DB,
@@ -21,7 +21,7 @@ sequelize.authenticate()
      .then(() => console.log('Connexion a la base de donné reussi'))
      .catch(err => console.log('Erreur de la connexion' + err))
 
-db = {}
+const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
@@ -37,3 +37,5 @@ db.sequelize = sequelize
 db.sequelize.sync({force : false})
      .then(() => console.log('La synchronisation reussie'))
      .catch(err => console.log('Erreur de la synchrosation'))
+
+module.exports = db

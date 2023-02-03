@@ -1,10 +1,10 @@
-const routeAdmin = require('express').Router()
+const routeAgent = require('express').Router()
 const agent = require('../controllers/agentcontroller')
 
-routeAdmin.post('/agent', agent.addAdmin)
-routeAdmin.get('/agent', agent.getAll)
-routeAdmin.get('/agent/:id', agent.getfindId)
-routeAdmin.update('/agent/:id', agent.updateId)
-routeAdmin.delete('/agent/:id', agent.deleteId)
+routeAgent.post('/agent', agent.addAdmin)
+routeAgent.get('/agent', agent.getAll)
+routeAgent.get('/agent/:id', agent.getfindId)
+routeAgent.put('/agent/:id', agent.updateId)
+routeAgent.delete('/agent/:id', agent.deleteId)
 
-module.exports = routeAdmin
+module.exports = routeAgent

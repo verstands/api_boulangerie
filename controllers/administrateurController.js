@@ -10,7 +10,7 @@ const addAdmin = async (req, res) => {
         password : req.password.body
     }
 
-    const admin = ADMIN.create({ data })
+    const admin = await ADMIN.create({ data })
     let message = "l'administrateur a ete crée avec success";
     res.status(200).json({ 
         message : message,
@@ -19,9 +19,9 @@ const addAdmin = async (req, res) => {
 }
 
 const getAll = async (req, res) => {
-    const all = ADMIN.findAll({})
-    let message = "Les administrateur";
-    req.status(200).json({
+    const all = await ADMIN.findAll({})
+    let message = "Les administrateurs";
+    res.status(200).json({
         message : message,
         data : all
     });
@@ -29,7 +29,7 @@ const getAll = async (req, res) => {
 
 const getfindId = async (req, res) => {
     let id = req.params.id;
-    const getId = AMDIN.findOne({where : {id : id}})
+    const getId = await ADMIN.findOne({where : {id : id}})
     res.status(200).json({
         data : getId
     })
@@ -37,7 +37,7 @@ const getfindId = async (req, res) => {
 
 const updateId = async (res, req) => {
     let id = req.params.id
-    const updatId = ADMIN.update({where : {id : id}})
+    const updatId = await ADMIN.update({where : {id : id}})
     let message = "La modification a ete fait avec success"
     res.status(200).json({
         message : message
@@ -45,9 +45,9 @@ const updateId = async (res, req) => {
 }
 const deleteId = async (req, res) => {
     let id = req.params.id
-    const DeleteId = ADMIN.delete({ where : {id : id}})
+    const DeleteId = await ADMIN.destroy({ where : {id : id}})
     let message = "La suppresion a ete fait avec success"
-    req.status(200).json({
+    res.status(200).json({
         message : message
     })
 }
