@@ -11,6 +11,7 @@ const routerCategorie = require('./routes/categorieRoute')
 const routerClient = require('./routes/clientRoute')
 const routeClient = require('./routes/clientRoute')
 const routeFonction = require('./routes/fonctionRoute')
+const routeproduit = require('./routes/prodouitRoute')
 
 app.use(cors())
 app.use(express.json())
@@ -22,6 +23,7 @@ app.use('/api', routerAgent)
 app.use('/api', routerCategorie)
 app.use('/api', routeClient)
 app.use('/api', routeFonction)
+app.use('/api', routeproduit)
 
 
 app.get('/', (req, res) => {
