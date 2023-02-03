@@ -1,4 +1,4 @@
-const categorie = require('express').Router()
+const routecategorie = require('express').Router()
 const categorie = require('../controllers/categorieController')
 
 routecategorie.post('/categorie', categorie.addAdmin)

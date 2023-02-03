@@ -1,13 +1,17 @@
 const db  = require('../models')
-const ADMIN = db.categorie
+const ADMIN = db.client
 
 const addAdmin = async (req, res) => {
     let data = {
-        nomCat : req.nomCat.body,
+        nom : req.nom.body,
+        postnom : req.postnom.body,
+        lieuN : req.lieuN.body,
+        adresse : req.adresse.body,
+        telephone : req.telephone.body,
     }
 
     const admin = await ADMIN.create({ data })
-    let message = "la categorie a ete crée avec success";
+    let message = "la client a ete crée avec success";
     res.status(200).json({ 
         message : message,
         data : admin
@@ -16,7 +20,7 @@ const addAdmin = async (req, res) => {
 
 const getAll = async (req, res) => {
     const all = await ADMIN.findAll({})
-    let message = "Les categories";
+    let message = "Les clients";
     res.status(200).json({
         message : message,
         data : all
