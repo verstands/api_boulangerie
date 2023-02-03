@@ -1,5 +1,7 @@
 const db  = require('../models')
 const ADMIN = db.administrateur
+const primaryKey = require('../auth/priveKey')
+const jwt = require('jsonwebtoken')
 
 const addAdmin = async (req, res) => {
     let data = {
@@ -54,11 +56,23 @@ const deleteId = async (req, res) => {
 
 
 const Loginverify = async (req, res) => {
-    let email = req.body.email
-    let password = req.body.password
-    const verify = ADMIN.findOne({where : { email : email, password : password}})
-        .then(() => { message : 'ok'})
-        .catch(err => {message : 'erreur' + err})
+    const test = ADMIN.findOne({where : {email : req.body.email}})
+    const testP = ADMIN.findOne({where : {password : req.body.password}})
+    if(!test){
+        const message = 'incorrect';
+        return res.status(400).json({ message })
+    }
+    if(!testP){
+        const message = 'incorrect password';
+        return res.status(400).json({ message })
+    }
+    const jeton = jwt.sign(
+        { id: user.id },
+        primaryKey,
+        { expiresIn: "5h" }
+    )
+    const message = `L'utilisateur a été connecté avec succès`;
+    return res.json({ message, jeton })
 }
 
 module.exports = {
