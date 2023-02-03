@@ -10,7 +10,7 @@ const addAdmin = async (req, res) => {
         telephone : req.telephone.body,
     }
 
-    const admin = await ADMIN.create({ data })
+    const admin = await ADMIN.create(ata)
     let message = "la client a ete crée avec success";
     res.status(200).json({ 
         message : message,

@@ -6,7 +6,7 @@ const addAdmin = async (req, res) => {
         nomCFonc : req.nomCFonc.body,
     }
 
-    const admin = await ADMIN.create({ data })
+    const admin = await ADMIN.create(data)
     let message = "la fonction a ete crée avec success";
     res.status(200).json({ 
         message : message,

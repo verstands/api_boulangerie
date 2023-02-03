@@ -6,7 +6,7 @@ const addAdmin = async (req, res) => {
         nomCat : req.nomCat.body,
     }
 
-    const admin = await ADMIN.create({ data })
+    const admin = await ADMIN.create(data)
     let message = "la categorie a ete crée avec success";
     res.status(200).json({ 
         message : message,

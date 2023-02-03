@@ -9,7 +9,7 @@ const addAdmin = async (req, res) => {
         idcat : req.idcat.body,
     }
 
-    const admin = await ADMIN.create({ data })
+    const admin = await ADMIN.create(data)
     let message = "le produit a ete crée avec success";
     res.status(200).json({ 
         message : message,
@@ -27,7 +27,7 @@ const getAll = async (req, res) => {
 }
 
 const getfindId = async (req, res) => {
-    let id = req.params.id;
+     let id = req.params.id;
     const getId = await ADMIN.findOne({where : {id : id}})
     res.status(200).json({
         data : getId

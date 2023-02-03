@@ -3,14 +3,14 @@ const ADMIN = db.administrateur
 
 const addAdmin = async (req, res) => {
     let data = {
-        nom : req.nom.body,
-        postnom : req.postnom.body,
-        email : req.email.body,
-        adresse : req.adresse.body,
-        password : req.password.body
+        nom : req.body.nom,
+        postnom : req.body.postnom,
+        email : req.body.email,
+        adresse : req.body.adresse,
+        password : req.body.password
     }
 
-    const admin = await ADMIN.create({ data })
+    const admin = await ADMIN.create(data)
     let message = "l'administrateur a ete crée avec success";
     res.status(200).json({ 
         message : message,
@@ -52,10 +52,20 @@ const deleteId = async (req, res) => {
     })
 }
 
+
+const Loginverify = async (req, res) => {
+    let email = req.body.email
+    let password = req.body.password
+    const verify = ADMIN.findOne({where : { email : email, password : password}})
+        .then(() => { message : 'ok'})
+        .catch(err => {message : 'erreur' + err})
+}
+
 module.exports = {
     addAdmin,
     getAll,
     getfindId,
     deleteId,
-    updateId
+    updateId,
+    Loginverify
 }
