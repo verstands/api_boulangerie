@@ -7,7 +7,9 @@ const port = process.env.PORT || 4000
 
 const routerAdmin = require('./routes/adminsitrateurRoute')
 const routerAgent = require('./routes/agentRoute')
-const routerCategorie = require('./routes/categorie')
+const routerCategorie = require('./routes/categorieRoute')
+const routerClient = require('./routes/clientRoute')
+const routeClient = require('./routes/clientRoute')
 
 app.use(cors())
 app.use(express.json())
@@ -17,6 +19,7 @@ app.use(express.urlencoded({ extended : true}))
 app.use('/api', routerAdmin)
 app.use('/api', routerAgent)
 app.use('/api', routerCategorie)
+app.use('/api', routeClient)
 
 
 app.get('/', (req, res) => {
