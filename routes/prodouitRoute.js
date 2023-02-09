@@ -1,10 +1,12 @@
 const routeProduit = require('express').Router()
 const produit = require('../controllers/produitController')
+const auth = require('../auth/auth')
 
-routeProduit.post('/produit', produit.addAdmin)
-routeProduit.get('/produit', produit.getAll)
-routeProduit.get('/produit/:id', produit.getfindId)
-routeProduit.put('/produit/:id', produit.updateId)
-routeProduit.delete('/produit/:id', produit.deleteId)
+
+routeProduit.post('/produit', auth,produit.addAdmin)
+routeProduit.get('/produit', auth,produit.getAll)
+routeProduit.get('/produit/:id', auth,produit.getfindId)
+routeProduit.put('/produit/:id', auth,produit.updateId)
+routeProduit.delete('/produit/:id', auth,produit.deleteId)
 
 module.exports = routeProduit

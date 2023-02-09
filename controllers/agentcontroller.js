@@ -52,10 +52,53 @@ const deleteId = async (req, res) => {
     })
 }
 
+const LoginCaissier = async (req, res) => {
+    if (req.body.email && req.body.password) {
+        dd = await ADMIN.findOne({where : {email : req.body.email, password : req.body.password}})
+        if(dd){
+            let userId = dd.id;
+            const token = jwt.sign({id : userId}, primarykey, {expiresIn : "1h"} )
+            let message = 'l\'utilisateur est connecté'
+            res.status(200).json({
+                message, token, userId
+            })
+        }else{
+            let message = "Utilisateur incorrect"
+            res.status(401).json({
+                message : message
+            })   
+        }
+        
+    }
+}
+
+const LoginGuichet = async (req, res) => {
+    if (req.body.email && req.body.password) {
+        dd = await ADMIN.findOne({where : {email : req.body.email, password : req.body.password}})
+        if(dd){
+            let userId = dd.id;
+            const token = jwt.sign({id : userId}, primarykey, {expiresIn : "1h"} )
+            let message = 'l\'utilisateur est connecté'
+            res.status(200).json({
+                message, token, userId
+            })
+        }else{
+            let message = "Utilisateur incorrect"
+            res.status(401).json({
+                message : message
+            })   
+        }
+        
+    }
+}
+
 module.exports = {
     addAdmin,
     getAll,
     getfindId,
     deleteId,
-    updateId
+    updateId,
+    LoginCaissier,
+    LoginGuichet
+
 }
