@@ -1,13 +1,15 @@
 const db  = require('../models')
 const ADMIN = db.agent
+const jwt = require('jsonwebtoken')
+const primarykey = require('../auth/priveKey')
 
 const addAdmin = async (req, res) => {
     let data = {
-        nom : req.nom.body,
-        postnom : req.postnom.body,
-        email : req.email.body,
-        adresse : req.adresse.body,
-        password : req.password.body
+        nom : req.body.nom,
+        postnom : req.body.postnom,
+        email : req.body.email,
+        adresse : req.body.adresse,
+        password : req.body.password
     }
 
     const admin = await ADMIN.create(data)

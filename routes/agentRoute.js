@@ -7,7 +7,7 @@ routeAgent.get('/agent', auth, agent.getAll)
 routeAgent.get('/agent/:id', auth,agent.getfindId)
 routeAgent.put('/agent/:id', auth,agent.updateId)
 routeAgent.delete('/agent/:id', auth,agent.deleteId)
-routeAgent.post('/LoginCaissier', agent.LoginCaissier)
-routeAgent.post('/LoginGuichet', agent.LoginGuichet)
+routeAgent.post('/loginCaissier', agent.LoginCaissier)
+routeAgent.post('/loginGuichet', agent.LoginGuichet)
 
 module.exports = routeAgent

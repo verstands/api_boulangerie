@@ -32,6 +32,7 @@ db.sequelize = sequelize
      db.client = require('./clientModel.js')(sequelize, DataTypes)
      db.categorie = require('./categorieModel.js')(sequelize, DataTypes)
      db.agent = require('./agentModel.js')(sequelize, DataTypes)
+     db.commande = require('./commandeModel')(sequelize, DataTypes)
 
 
 db.sequelize.sync({force : false})
