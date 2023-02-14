@@ -59,7 +59,7 @@ const LoginCaissier = async (req, res) => {
         dd = await ADMIN.findOne({where : {email : req.body.email, password : req.body.password}})
         if(dd){
             let userId = dd.id;
-            const token = jwt.sign({id : userId}, primarykey, {expiresIn : "1h"} )
+            const token = jwt.sign({id : userId}, primarykey, {expiresIn : "5h"} )
             let message = 'l\'utilisateur est connecté'
             res.status(200).json({
                 message, token, userId
