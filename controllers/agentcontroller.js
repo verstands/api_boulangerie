@@ -58,11 +58,12 @@ const LoginCaissier = async (req, res) => {
     if (req.body.email && req.body.password) {
         dd = await ADMIN.findOne({where : {email : req.body.email, password : req.body.password}})
         if(dd){
-            let userId = dd.id;
+            let nom = dd.nom;
+            let prenom = dd.prenom;
             const token = jwt.sign({id : userId}, primarykey, {expiresIn : "5h"} )
             let message = 'l\'utilisateur est connecté'
             res.status(200).json({
-                message, token, userId
+                message, token, nom, prenom
             })
         }else{
             let message = "Utilisateur incorrect"
@@ -78,11 +79,13 @@ const LoginGuichet = async (req, res) => {
     if (req.body.email && req.body.password) {
         dd = await ADMIN.findOne({where : {email : req.body.email, password : req.body.password}})
         if(dd){
+            let nom = dd.nom;
             let userId = dd.id;
+            let prenom = dd.postnom;
             const token = jwt.sign({id : userId}, primarykey, {expiresIn : "1h"} )
             let message = 'l\'utilisateur est connecté'
             res.status(200).json({
-                message, token, userId
+                message, token, nom, prenom
             })
         }else{
             let message = "Utilisateur incorrect"

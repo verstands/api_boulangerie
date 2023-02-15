@@ -60,7 +60,9 @@ const Loginverify = async (req, res) => {
         dd = await ADMIN.findOne({where : {email : req.body.email, password : req.body.password}})
         if(dd){
             let userId = dd.id;
-            const token = jwt.sign({id : userId}, primarykey, {expiresIn : "1h"} )
+            const vv = 3 * 24 * 60 * 60 * 1000;
+            const c = "555444666";
+            const token = jwt.sign({id : userId}, c, {expiresIn : vv} )
             let message = 'l\'utilisateur est connecté'
             res.status(200).json({
                 message, token, userId
